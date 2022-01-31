@@ -16,14 +16,14 @@ module.exports = {
   } 
   
   async function add(user) {
-    const [id] = await db('users').insert(user)
+    const [user_id] = await db('users').insert(user)
   
-    return findById(id)
+    return findById(user_id)
   }
   
   function findById(id) {
     return db('users')
-      .where({ id })
+      .where({ user_id })
       .first()
   }
   
