@@ -4,7 +4,9 @@ const router = require("express").Router();
 const User = require("../users/users-model");
 const { BCRYPT_ROUNDS } = require("../secrets/index");
 
-router.post("/register", (req, res, next) => {
+const {validateUserId} = require('../auth/auth-middleware')
+
+router.post("/register",validateUserId, (req, res, next) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, BCRYPT_ROUNDS);
   user.password = hash;
@@ -15,7 +17,7 @@ router.post("/register", (req, res, next) => {
     .catch(next);
 });
 
-router.post("/login", (req, res, next) => {
+router.post("/login",validateUserId, (req, res, next) => {
   let { username, password } = req.body;
   User.findBy({ username })
     .then(([user]) => {

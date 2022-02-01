@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../secrets/index");
+const User = require('../users/users-model')
 
 const restricted = (req, res, next) => {
     const token = req.headers.authorization;
@@ -17,6 +18,25 @@ const restricted = (req, res, next) => {
     }
   };
 
+  async function validateUserId(req, res, next) {
+    try {
+      const username = await User.getById(req.params.user_id)
+      if (!username) {
+        res.status(404).json({
+          message: 'user not found'
+        }) 
+      } else {
+        req.username = username
+        next()
+      }
+    } catch (err) {
+      res.status(500).json({ 
+        message: "problem finding user"
+      })
+    }
+  }
+
   module.exports = {
-    restricted
+    restricted,
+    validateUserId
   };
