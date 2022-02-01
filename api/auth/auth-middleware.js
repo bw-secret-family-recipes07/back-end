@@ -20,7 +20,7 @@ const restricted = (req, res, next) => {
 
   async function validateUserId(req, res, next) {
     try {
-      const username = await User.getById(req.params.user_id)
+      const username = await User.getById(req.body.username)
       if (!username) {
         res.status(404).json({
           message: 'user not found'
