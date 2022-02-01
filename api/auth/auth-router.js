@@ -31,19 +31,5 @@ router.post("/login", (req, res, next) => {
     .catch(next);
 });
 
-router.get('/logout', (req, res) => {
-  if (req.session.username) {
-    req.session.destroy((err) => {
-      if (err) {
-        res.set('Set-Cookie', 'monkey=bar')
-        res.json({ message: `sorry, could you retry` })
-      } else {
-        res.json({ message: `bye, it was awesome` })
-      }
-    })
-  } else {
-    res.json({ message: `I do not believe we have met?` })
-  }
-})
 
 module.exports = router;
