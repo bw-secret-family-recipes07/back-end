@@ -3,13 +3,13 @@ const Items = require('./items-model')
 
 const router = express.Router()
 
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
 try{
-const stuff = req.body
-console.log(stuff)
+const food = await Items.find()
+res.json(food);
 }
 catch (err){
-  console.log(err)
+next(err)
 }
   })
 
