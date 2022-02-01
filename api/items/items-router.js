@@ -10,3 +10,5 @@ router.get('/', (req, res, next) => {
       })
       .catch(next)
   })
+
+  module.exports = router
