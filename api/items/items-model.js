@@ -5,7 +5,9 @@ module.exports = {
 }
 
 function find() {
-  return db('items')
+  return db("items as i")
+  .join('users as u','u.user_id', 'i.user_id' )
+  .select('i.*', 'u.user_id')
 }
 
 
