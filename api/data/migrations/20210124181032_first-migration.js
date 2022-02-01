@@ -8,10 +8,8 @@ exports.up = async (knex) => {
     })
     .createTable('items', (items) => {
       items.increments('item_id')
-      items.string('item_name', 128).notNullable()
+      items.string('item_name', 128)
       items.integer('user_id')
-      .unsigned()
-      .notNullable()
       .references('user_id')
       .inTable('users')
       .onUpdate('RESTRICT')
