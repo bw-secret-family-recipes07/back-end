@@ -8,6 +8,7 @@ exports.seed = async function (knex) {
       await knex("items")
       .insert({
         item_name: 'Burger',
+        user_id: 1
       })
   }
   
