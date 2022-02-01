@@ -12,7 +12,7 @@ exports.up = async (knex) => {
       items.string('source', 128)
       items.string('ingredients', 128)
       items.string('instructions', 128)
-      items.string('category ', 128)
+      items.string('category', 128)
       items.integer('user_id')
       .references('user_id')
       .inTable('users')
