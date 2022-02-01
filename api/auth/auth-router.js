@@ -32,7 +32,7 @@ router.post("/login", (req, res, next) => {
 });
 
 router.get('/logout', (req, res) => {
-  if (req.session.user) {
+  if (req.session.username) {
     req.session.destroy((err) => {
       if (err) {
         res.set('Set-Cookie', 'monkey=bar')
