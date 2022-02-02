@@ -36,15 +36,14 @@ router.post('/',  (req, res, next) => {
       .catch(next)
 })
 
-router.put('/', (req, res, next) => {
-  // Item.edit()
+router.put('/:id', (req, res, next) => {
+    Item.edit(req.params.id, req.body)
+      .then(edited => {
+        res.json(edited)
+      })
+      .catch(next)
 })
-//   Item.edit(req.body
-//       .then(edited => {
-//           res.status(202).json(edited)
-//       })
-//       .catch(next)
-// )
+
 
 router.delete('/:id', (req, res, next) => {
   Item.del(req.params.id)
