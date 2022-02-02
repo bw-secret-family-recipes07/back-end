@@ -16,8 +16,8 @@ exports.up = async (knex) => {
       items.integer('user_id')
       .references('user_id')
       .inTable('users')
-      // .onUpdate('RESTRICT')
-      // .onDelete('RESTRICT')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE')
 })
 }
 
