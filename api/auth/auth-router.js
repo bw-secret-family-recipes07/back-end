@@ -17,7 +17,7 @@ router.post("/register",validateUserId, (req, res, next) => {
     .catch(next);
 });
 
-router.post("/login", (req, res, next) => {
+router.post("/login",validateUserId, (req, res, next) => {
   let { username, password } = req.body;
   User.findBy({ username })
     .then(([user]) => {
