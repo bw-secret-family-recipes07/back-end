@@ -5,6 +5,7 @@ const server = express()
 
 const authRouter = require('./auth/auth-router')
 const itemsRouter = require('../api/items/items-router')
+const res = require('express/lib/response')
 
 
 server.use(express.json())
@@ -13,6 +14,11 @@ server.use(cors())
 
 server.use('/api/auth', authRouter)
 server.use('/api/items', itemsRouter)
+
+server.use('*', () => {
+  console.log('not found')
+  res.json({message: 'hitting nothing'})
+})
 
 
 server.use((err, req, res, next) => { // eslint-disable-line
