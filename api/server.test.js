@@ -16,7 +16,9 @@ beforeAll(async () => {
   describe('End Point Tests', () => {
       describe('New user registration works', () => {        
         test('Returns 200', async () => {
-              const res = await request(server).get('/register')
+              const res = await request(server)
+              .post('/register')
+              .send({ username: 'John', password: 'Wick'})
               expect(res.status).toBe(201)
           })
       })
