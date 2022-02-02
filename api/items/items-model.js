@@ -29,4 +29,4 @@ async function add(newItem) {
 
 function del(id) {
   return db('items').where("item_id", id).del()
-} ^I
+} 
