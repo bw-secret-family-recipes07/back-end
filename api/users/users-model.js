@@ -21,8 +21,8 @@ async function add(user) {
   return username;
 }
 
-function getById(user_id) {
+function getById(username) {
   return db('users')
-    .where({ user_id })
+    .where({ username })
     .first();
 }
