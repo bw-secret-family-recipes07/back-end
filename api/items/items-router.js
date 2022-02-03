@@ -4,7 +4,7 @@ const { validateItem } = require('./items-middleware');
 
 const router = express.Router();
 
- const {restricted} = require('../auth/auth-middleware')
+ const { restricted } = require('../auth/auth-middleware')
 
 
 router.get("/", restricted, async (req, res, next) => {
@@ -16,16 +16,24 @@ router.get("/", restricted, async (req, res, next) => {
   }
 })
 
-router.get('/:id', restricted, (req, res, next) => {
-  const {id} = req.params
-  Item.findById(id)
-      .then(item => {
-          if (!item) {
-              return next({ status: 404, message: `could not find item with id ${id}`})
-          }
-          res.status(200).json(item)
-      })
-      .catch(next)
+router.get('/name', restricted, (req, res, next) => {
+  let {item_name} = req.body
+  console.log('item_name', item_name)
+  Item.findBy({item_name})
+  .then(item => {
+    console.log(item)
+    res.json(item)
+  })
+  .catch(next)
+  // const {id} = req.params
+  // Item.findById(id)
+  //     .then(item => {
+  //         if (!item) {
+  //             return next({ status: 404, message: `could not find item with id ${id}`})
+  //         }
+  //         res.status(200).json(item)
+  //     })
+  //     .catch(next)
 })
 
 router.post('/', restricted, validateItem, (req, res, next) => {
