@@ -74,6 +74,8 @@ router.put('/:id', restricted, validateItem, (req, res, next) => {
 })
 
 
+// validate non existent IDs
+
 router.delete('/:id', (req, res, next) => {
   Item.del(req.params.id)
   .then(() => res.status(200).json({message:`item with id ${req.params.id} was sucessfully deleted`}))
