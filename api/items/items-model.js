@@ -3,7 +3,8 @@ const db = require('../data/db-config')
 module.exports = {
   find,
   findById, 
-  add, 
+  add,
+  edit, 
   del
 }
 
@@ -23,9 +24,10 @@ async function add(newItem) {
   return added;
 }
 
-// function edit(id, changes) {
-//   return db('items')
-// }
+async function edit(id, changes) {
+  await db('items').where("item_id", id).update(changes)
+  return findById(id)
+}
 
 function del(id) {
   return db('items').where("item_id", id).del()
