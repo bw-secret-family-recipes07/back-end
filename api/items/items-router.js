@@ -28,7 +28,7 @@ router.get('/:id', (req, res, next) => {
       .catch(next)
 })
 
-router.post('/',  (req, res, next) => {
+router.post('/', validateItem, (req, res, next) => {
   Item.add(req.body)
       .then(newitem => {
           res.status(201).json(newitem)
@@ -36,7 +36,7 @@ router.post('/',  (req, res, next) => {
       .catch(next)
 })
 
-router.put('/:id', (req, res, next) => {
+router.put('/:id', validateItem, (req, res, next) => {
     Item.edit(req.params.id, req.body)
       .then(edited => {
         res.json(edited)
