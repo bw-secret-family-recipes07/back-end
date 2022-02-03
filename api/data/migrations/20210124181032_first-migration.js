@@ -18,6 +18,7 @@ exports.up = async (knex) => {
       .inTable('users')
       .onUpdate('CASCADE')
       .onDelete('CASCADE')
+      
 })
 }
 

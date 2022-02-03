@@ -5,7 +5,8 @@ function validateItem(req, res, next ) {
             !source || !source.trim() || 
             !ingredients || !ingredients.trim() || 
             !  instructions || !instructions.trim() || 
-            !category || !category.trim()) {
+            !category || !category.trim())
+            {
                 res.status(400).json({
                 message: 'all fields are required'
             })
