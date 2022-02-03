@@ -19,9 +19,10 @@ function findById(id) {
     .where("i.item_id", id)
 }
 
-async function add(newItem) {
+async function add(newItem, user_id) {
   const [added] = await db('items')
-  .insert(newItem, ["item_name","source","ingredients","instructions","category", "user_id"])
+  .insert(
+    {...newItem, user_id}, ["item_name","source","ingredients","instructions","category"])
   return added;
 }
 
