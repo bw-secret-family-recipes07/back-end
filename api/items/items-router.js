@@ -16,6 +16,9 @@ router.get("/", restricted, async (req, res, next) => {
   }
 })
 
+
+// if item is not listed it responds with a blank array with a code 200
+
 router.get('/:id', restricted, (req, res, next) => {
   const {id} = req.params
   Item.findById(id)
@@ -28,13 +31,19 @@ router.get('/:id', restricted, (req, res, next) => {
       .catch(next)
 })
 
+// when new item posted needs to contain the current user_id
+// add a item verification if item already exists
+
+
 router.post('/', restricted, validateItem, (req, res, next) => {
   Item.add(req.body)
       .then(newitem => {
-          res.status(201).json(newitem)
+          res.status(201).json({message: `Item has been added`})
       })
       .catch(next)
 })
+
+
 
 router.put('/:id', restricted, validateItem, (req, res, next) => {
     Item.edit(req.params.id, req.body)

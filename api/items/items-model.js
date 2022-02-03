@@ -20,9 +20,12 @@ function findById(id) {
 }
 
 async function add(newItem) {
-  const [added] = await db('items').insert(newItem, ["item_name"]);
+  const [added] = await db('items')
+  .insert(newItem, ["item_name","source","ingredients","instructions","category", "user_id"])
   return added;
 }
+
+// fix update i dont know how to test
 
 async function edit(id, changes) {
   await db('items').where("item_id", id).update(changes)
