@@ -19,13 +19,13 @@ router.get("/", restricted, async (req, res, next) => {
 
 router.get('/item_name', restricted, (req, res, next) => {
   let {item_name} = req.body
-  console.log('item_name', item_name)
   Item.findBy({item_name})
   .then(item => {
-    console.log(item)
     res.json(item)
   })
   .catch(next)
+
+})
   // const {id} = req.params
   // Item.findById(id)
   //     .then(item => {
