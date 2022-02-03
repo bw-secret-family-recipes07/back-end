@@ -58,7 +58,7 @@ router.get('/title', restricted, (req, res, next) => {
 router.post('/', restricted, validateItem, (req, res, next) => {
   Item.add(req.body, req.decodedJwt.subject)
       .then(newitem => {
-          res.status(201).json({message: `Item has been added`, newitem, info: req.decodedJwt.subject })
+          res.status(201).json({message: `Item has been added`, newitem, Uploaded_by_User_ID: req.decodedJwt.subject})
       })
       .catch(next)
 })

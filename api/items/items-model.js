@@ -1,3 +1,4 @@
+const req = require('express/lib/request')
 const db = require('../data/db-config')
 
 module.exports = {
@@ -32,8 +33,6 @@ async function add(newItem, user_id) {
     {...newItem, user_id}, ["title","source","ingredients","instructions","category"])
   return added;
 }
-
-// fix update i dont know how to test
 
 async function edit(id, changes) {
   await db('items').where("item_id", id).update(changes)
