@@ -8,7 +8,7 @@ exports.up = async (knex) => {
     })
     .createTable('items', (items) => {
       items.increments('item_id')
-      items.string('item_name', 128)
+      items.string('title', 128)
       items.string('source', 128)
       items.string('ingredients', 128)
       items.string('instructions', 128)

@@ -1,7 +1,7 @@
 function validateItem(req, res, next ) {
-    const { item_name, source, ingredients, instructions, category } = req.body
+    const { title, source, ingredients, instructions, category } = req.body
         if(
-            !item_name|| !item_name.trim() || 
+            !title|| !title.trim() || 
             !source || !source.trim() || 
             !ingredients || !ingredients.trim() || 
             !  instructions || !instructions.trim() || 

@@ -29,7 +29,7 @@ function findBy(filter) {
 async function add(newItem, user_id) {
   const [added] = await db('items')
   .insert(
-    {...newItem, user_id}, ["item_name","source","ingredients","instructions","category"])
+    {...newItem, user_id}, ["title","source","ingredients","instructions","category"])
   return added;
 }
 

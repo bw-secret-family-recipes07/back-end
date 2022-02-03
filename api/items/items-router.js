@@ -17,9 +17,9 @@ router.get("/", restricted, async (req, res, next) => {
 })
 
 
-router.get('/item_name', restricted, (req, res, next) => {
-  let {item_name} = req.body
-  Item.findBy({item_name})
+router.get('/title', restricted, (req, res, next) => {
+  let {title} = req.body
+  Item.findBy({title})
   .then(item => {
     res.json(item)
   })
