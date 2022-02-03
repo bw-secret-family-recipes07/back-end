@@ -4,10 +4,10 @@ const { validateItem } = require('./items-middleware');
 
 const router = express.Router();
 
-// const {restricted} = require('../auth/auth-middleware')
-//restricted, -->add this middleware back into router.get
+ const {restricted} = require('../auth/auth-middleware')
 
-router.get("/", async (req, res, next) => {
+
+router.get("/", restricted, async (req, res, next) => {
   try {
     const food = await Item.find();
     res.json(food);
@@ -16,7 +16,7 @@ router.get("/", async (req, res, next) => {
   }
 })
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', restricted, (req, res, next) => {
   const {id} = req.params
   Item.findById(id)
       .then(item => {
@@ -28,7 +28,7 @@ router.get('/:id', (req, res, next) => {
       .catch(next)
 })
 
-router.post('/', validateItem, (req, res, next) => {
+router.post('/', restricted, validateItem, (req, res, next) => {
   Item.add(req.body)
       .then(newitem => {
           res.status(201).json(newitem)
@@ -36,7 +36,7 @@ router.post('/', validateItem, (req, res, next) => {
       .catch(next)
 })
 
-router.put('/:id', validateItem, (req, res, next) => {
+router.put('/:id', restricted, validateItem, (req, res, next) => {
     Item.edit(req.params.id, req.body)
       .then(edited => {
         res.json(edited)
