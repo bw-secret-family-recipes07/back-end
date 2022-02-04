@@ -16,9 +16,9 @@ function find() {
   .select('i.*', 'u.user_id')
 }
 
-function findById(title) {
+function findById(id) {
   return db('items')
-    .where("title", title)
+    .where("item_id", id)
     .first()
 }
 
