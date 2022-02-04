@@ -62,16 +62,6 @@ afterAll(async () => {
       })
   })
 
-    // describe('Items Router Tests', () => {
-    //   describe("items delete endpoin", () => {
-    //     test('Item successfully deleted', async () => {
-    //       const delItem = await Item.findById()
-    //       await Item.del()
-    //     })
-    //   })
-      
-    // });
-
     describe('Items Model Functions', () => {
       describe('create an item', () => {
         it('adds item to the db', async ()=> {
@@ -84,32 +74,6 @@ afterAll(async () => {
           items = await db('items')
           expect(items).toHaveLength(4)
         })
-        // it('added item is there', async () => {
-        //   await Item.add(item1) 
-        //   const item = await Item.findById(3)
-        //   console.log(item)
-        //   expect(item).toMatchObject(item1)
-        // })
       })
-      // describe('find item by filter', () => {
-      //   it('finds item by title', async () => {
-      //     let {item_name} = item1
-      //     let item = await Item.findBy(item_name)
-      //     expect(item).toBe(item1)
-
-      //   })
-      // })
-
-      // describe('deletes item', () => {
-      //   it('removes from db', async () => {
-      //     const [item_id] = await db('items').insert(item1)
-      //     let item = await db('items').where({item_id}).first()
-      //     expect(item).toBeTruthy()
-
-      //     await request(server).delete("/api/items/"+ item_id)
-      //     item = await db('items').where({item_id}).first()
-      //     expect(item).toBeFalsy()
-      //   })
-      // })
     })
     
