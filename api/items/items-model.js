@@ -30,10 +30,10 @@ async function add(newItem, user_id) {
   const [added] = await db('items')
   .insert(
     {...newItem, user_id}, ["item_name","source","ingredients","instructions","category"])
-  return added;
+    return added;
+
 }
 
-// fix update i dont know how to test
 
 async function edit(id, changes) {
   await db('items').where("item_id", id).update(changes)
