@@ -11,7 +11,7 @@
     "rollback:prod": "heroku run knex migrate:rollback -a back-end-recipe",
     "database:prod": "heroku pg:psql -a back-end-recipe",
     "seed:prod": "heroku run knex seed:run -a back-end-recipe",
-    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand",
+    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand --watch" ,
     "deploy": "git push heroku main"
   },
   "engines": {
