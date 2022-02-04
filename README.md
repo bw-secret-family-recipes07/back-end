@@ -85,8 +85,18 @@ Install [Postgres](https://www.postgresql.org/download/) on your computer, takin
 
 - If your fronted devs are interested in running the API locally, help them set up PostgreSQL & pgAdmin on their machines, and teach them how to run migrations in their local. This empowers them to (1) help you troubleshoot bugs, (2) obtain the latest code by simply doing a `git pull` and (3) work with their own data, without it being wiped every time you roll back the Heroku db. Collaboration is more fun and direct, and you don't need to deploy as often.
 
-## Video Demonstration
+## End Points:
 
-The following demo explains how to set up a project using PostgreSQL and Heroku.
+- Register: https://back-end-recipe.herokuapp.com/api/auth/register (post) 
 
-[![Setting up PostgreSQL for Build Week](https://tk-assets.lambdaschool.com/e43c6d1e-5ae8-4142-937b-b865d71925fb_unit-4-build-week-project-scaffolding.png)](https://bloomtech-1.wistia.com/medias/2625bl7sei)
+- Login: https://back-end-recipe.herokuapp.com/api/auth/login (post)
+
+- Pull all data: https://back-end-recipe.herokuapp.com/api/items (get)
+
+- Add Data: https://back-end-recipe.herokuapp.com/api/items (post)
+
+- Edit Data: https://back-end-recipe.herokuapp.com/api/items/:Id  (put)
+
+- Delete Data https://back-end-recipe.herokuapp.com/api/items/:Id (del)
+
+- Search By Title https://back-end-recipe.herokuapp.com/api/items/search (get)
