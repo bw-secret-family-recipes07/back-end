@@ -12,8 +12,8 @@ exports.seed = async function (knex) {
       ])
       await knex("items")
       .insert([
-        {item_name: 'Burger' ,source: 'My Uncle',ingredients: 'Bun, meat, cheese', instructions: 'put meat and cheese in bun', category: 'American', user_id: 1},
-        {item_name: 'German Hotdog' ,source: 'My mom',ingredients: 'hotdog', instructions: 'hutdog', category: 'German', user_id: 2}
+        {title: 'Burger' ,source: 'My Uncle',ingredients: 'Bun, meat, cheese', instructions: 'put meat and cheese in bun', category: 'American', user_id: 1},
+        {title: 'German Hotdog' ,source: 'My mom',ingredients: 'hotdog', instructions: 'hutdog', category: 'German', user_id: 2}
       ])
   }
   

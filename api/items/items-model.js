@@ -1,3 +1,4 @@
+const req = require('express/lib/request')
 const db = require('../data/db-config')
 
 module.exports = {
@@ -29,12 +30,10 @@ function findBy(filter) {
 async function add(newItem, user_id) {
   const [added] = await db('items')
   .insert(
-    {...newItem, user_id}, ["item_name","source","ingredients","instructions","category"])
-    return added;
-
+    
+    {...newItem, user_id}, ["title","source","ingredients","instructions","category"])
+  return added;
 }
-
-
 async function edit(id, changes) {
   await db('items').where("item_id", id).update(changes)
   return findById(id)

@@ -17,9 +17,9 @@ router.get("/", restricted, async (req, res, next) => {
 })
 
 
-router.get('/item_name', restricted, (req, res, next) => {
-  let {item_name} = req.body
-  Item.findBy({item_name})
+router.get('/search', restricted, (req, res, next) => {
+  let {title} = req.body
+  Item.findBy({title})
   .then(item => {
     res.json(item)
   })
@@ -32,7 +32,7 @@ router.get('/item_name', restricted, (req, res, next) => {
 router.post('/', restricted, validateItem, (req, res, next) => {
   Item.add(req.body, req.decodedJwt.subject)
       .then(newitem => {
-          res.status(201).json({message: `Item has been added`, newitem, info: req.decodedJwt.subject })
+          res.status(201).json({message: `Item has been added`, newitem, Uploaded_by_User_ID: req.decodedJwt.subject})
       })
       .catch(next)
 })
@@ -57,30 +57,3 @@ router.delete('/:id', verifyDeleteItem,(req, res, next) => {
 
 module.exports = router;
 
- // const {id} = req.params
-  // Item.findById(id)
-  //     .then(item => {
-  //         if (!item) {
-  //             return next({ status: 404, message: `could not find item with id ${id}`})
-  //         }
-  //         res.status(200).json(item)
-  //     })
-  //     .catch(next)
-
-// if item is not listed it responds with a blank array with a code 200
-
-// router.get('/:id', restricted, (req, res, next) => {
-//   const {id} = req.params
-//   Item.findById(id)
-//       .then(item => {
-//           if (!item) {
-//               return next({ status: 404, message: `could not find item with id ${id}`})
-//           }
-//           res.status(200).json(item)
-//       })
-//       .catch(next)
-
-// })
-
-// when new item posted needs to contain the current user_id
-// add a item verification if item already exists
