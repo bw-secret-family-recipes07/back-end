@@ -10,7 +10,7 @@ const router = express.Router();
 router.get("/", restricted, async (req, res, next) => {
   try {
     const food = await Item.find();
-    res.json(food);
+    res.status(200).json(food);
   } catch (err) {
     next(err);
   }
